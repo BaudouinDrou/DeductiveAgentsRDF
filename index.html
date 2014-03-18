@@ -26,7 +26,10 @@
         <header>
           <h1>Interpretation test</h1>
         </header>
-        <section id="content">
+        <aside class="shadow">
+        	<h2>Menu</h2>
+        </aside>
+        <section id="content" class="shadow">
           <div id="target">
           </div>
         </section>
@@ -42,34 +45,20 @@
                 // data from the specified location is loaded
                 var p1;
                 if (success) {
-                  console.log('Finished!');
-                  p1 = $('<p>Loading Finished with success</p>');
+                  p1 = $('<p>Loading finished with success</p>');
                 } else {
-                  p1 = $('<p>Loading Finished with error</p>');
-                  console.log('Error occured!');
+                  p1 = $('<p>Loading finished with error</p>');
                 }
                 $("#target").append(p1);
                 $("#target").append($('<p>Result of loading : ' + result + '</p>'));
-                console.log('Results of loading : ' + result);
-                
-                // Testing with a standard query 
-                // store.execute("SELECT * { ?s ?p ?o }", function(succes,result) {
-                //  console.log("Succes Query : " + succes);
-                //  console.log(result.counts);
-                // });
-                store.execute("SELECT * FROM " + storeURI + "{ ?s ?p ?o }", function(success, results){
-                  if(success) {
 
-                    console.log("Success : " + results);
-                    // process results        
-/*                    if(results[0].s.token === 'uri') {
-                      $("#target").append($('<p>Value of the subject from the first triple : ' + results[0].s.value + '</p>'));
-                      console.log(results[0].s.value);
-                    }*/
+                // Testing SELECT Query :
+				store.execute("SELECT * FROM " + storeURI + "{ ?s ?p ?o }", function(success, results){
+                  if(success) {
+                    // process results
                     for(i = 0; i<results.length; ++i){
                       if(results[i].s.token === 'uri') {
                         $("#target").append($('<p>Value of the subject from the triple #' + i + ' : ' + results[i].s.value + '</p>'));
-                        console.log(results[0].s.value);
                       }
                     }    
                   }

@@ -4,10 +4,29 @@
 /* General style */
 
 	* {
-		font-family:"Courier New", "Comic Sans MS", cursive, Courier, monospace, sans-serif;
-		color:#666;
+		font-family: "Courier New", "Comic Sans MS", cursive, Courier, monospace, sans-serif;
+		color: #666;
 	}
 
 	h1 {
 		text-align: center;
+	}
+
+	aside {
+		float: right;
+		margin: 0px 10px;
+		width: 250px;
+	}
+
+	section {
+		margin-right: 300px;
+	}
+
+	.shadow {
+		box-shadow: -5px -5px 10px #666;
+		padding: 10px;
+	}
+
+	.shadow:hover {
+		box-shadow: -10px -10px 20px #666;		
 	}
