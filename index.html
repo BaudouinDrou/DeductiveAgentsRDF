@@ -37,10 +37,11 @@
         
         </footer>
         <script type='text/javascript'>
-          jQuery(document).ready(function(){
+          $(document).ready(function(){
             new rdfstore.Store(function(store) {
               // the new store is ready
-              var storeURI = "<./rdf/testing.ttl>"; // store location
+              // Store to load URI :
+              var storeURI = "<./rdf/testing.ttl>";
               store.execute("LOAD " + storeURI, function(success, result) {
                 // data from the specified location is loaded
                 var p1;
@@ -49,6 +50,7 @@
                 } else {
                   p1 = $('<p>Loading finished with error</p>');
                 }
+                // Add the result is in the DOM
                 $("#target").append(p1);
                 $("#target").append($('<p>Result of loading : ' + result + '</p>'));
 
@@ -58,6 +60,7 @@
                     // process results
                     for(i = 0; i<results.length; ++i){
                       if(results[i].s.token === 'uri') {
+                      	// Adding the results in the DOM
                         $("#target").append($('<p>Value of the subject from the triple #' + i + ' : ' + results[i].s.value + '</p>'));
                       }
                     }    
