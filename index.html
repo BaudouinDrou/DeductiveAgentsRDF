@@ -10,10 +10,11 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>rdfstore-js</title>
-  <meta name="author" content="Antonio Garrote">
+  <title>Deductive Agents RDF</title>
+  <meta name="author" content="Baudouin Duthoit">
 
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
 
   <!-- All JavaScript at the bottom, except for Modernizr which
   enables HTML5 elements & feature detects -->
@@ -55,7 +56,8 @@
                 $("#target").append($('<p>Result of loading : ' + result + '</p>'));
 
                 // Testing SELECT Query :
-				store.execute("SELECT * FROM " + storeURI + "{ ?s ?p ?o }", function(success, results){
+                var limit = 150;
+				store.execute("SELECT * FROM " + storeURI + "{ ?s ?p ?o } LIMIT" + limit, function(success, results){
                   if(success) {
                     // process results
                     for(i = 0; i<results.length; ++i){
