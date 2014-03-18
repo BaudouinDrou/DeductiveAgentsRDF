@@ -1,0 +1,7 @@
+@prefix rdfs: <http://www.w3.org/TR/rdf-mt/> .
+@prefix ex: <http://example.com/> .
+
+ex:a 	a	ex:b .
+ex:b	a	ex:c .
+
+#ex:a	a	ex:c .

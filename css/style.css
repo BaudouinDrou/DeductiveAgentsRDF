@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */	
+
+/* General style */
+
+	* {
+		font-family:"Courier New", "Comic Sans MS", cursive, Courier, monospace, sans-serif;
+		color:#666;
+	}
+
+	h1 {
+		text-align: center;
+	}
