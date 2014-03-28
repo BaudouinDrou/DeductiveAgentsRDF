@@ -39,6 +39,11 @@
         </footer>
         <script type='text/javascript'>
           $(document).ready(function(){
+
+			var callBack = function(){
+				console.log('Hi');
+			}
+
             new rdfstore.Store(function(store) {
               // the new store is ready
               // Store to load URI :
@@ -64,6 +69,9 @@
                       if(results[i].s.token === 'uri') {
                       	// Adding the results in the DOM
                         $("#target").append($('<p>Value of the subject from the triple #' + i + ' : ' + results[i].s.value + '</p>'));
+						store.node(results[i].s.value, storeURI, function(graph) {
+							$("#target").append($('<p>Value of the graph object #' + i + ' : ' + graph.forEach(callBack) + '</p>'));
+						});
                       }
                     }    
                   }
