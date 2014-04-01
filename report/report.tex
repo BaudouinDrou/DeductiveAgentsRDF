@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[colorlinks, urlcolor=gray, citecolor=red, breaklinks, pagebackref]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\definecolor{gray}{rgb}{0.8,0.8,0.8}
+\newenvironment{itemh}[0]{\begin{itemize}[label=$\heartsuit$, font=\color{gray} \small]}{\end{itemize}}
+\lstset{frame=shadowbox, basicstyle=\small, backgroundcolor=\color{white}, rulesepcolor=\color{gray}, breaklines=true, numbers=left, numberstyle=\tiny}
+
+\begin{document}
+\title{SemWeb Assignment 2}
+\author{Baudouin Duthoit\\
+		Student number : 2540566\\
+		VUnet ID : bdt230\\
+		Actualized on \today}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Ontology 10 points}
+	\subsection{1) }
+		\textit{Chose a domain for your ontology}\\
+		I chose the furniture field for my ontology.
+	\subsection{2) }
+		\textit{Define two classes using restrictions as shown in lecture 3}\\
+		"Outdoor\_furnitures" and "Inside\_furnitures" are my two classes.
+		I also define some other classes like "Chair", "Table", and "Outside\_furniture" as an equivalent class of "Outdoor\_furniture".
+	\subsection{3) }
+		Here are the 3 instances for each class :
+		\begin{itemize}
+			\item Outdoor\_furnitures
+			\begin{itemh}
+				\item plastic\_table
+				\item plastic\_chair
+				\item sunshade
+			\end{itemh}
+			\item Inside\_furnitures
+			\begin{itemh}
+				\item bed
+				\item carpet
+				\item armchair
+			\end{itemh}
+		\end{itemize}
+	\subsection{4) \& 5)}
+		After loading in Prot\'eg\'e, the classes are in the right order, but even
+		after reasoning, the instances don't go to the right classes.
+		But when I query with Yasgui on my local fuseki server, the instances are right classified.
+		Here is the Prot\'eg\'e's screen-shot.
+% 		\begin{center}
+% 		\scalebox{1}[1]{
+% 			\includegraphics[width=12cm]{ProtegeScreenshot2.png}
+% 			}
+% 		\end{center}
+	\subsection{6) }
+		I use "owl:AllValuesFrom" and "owl:hasValue".
+		The first one to get all furnitures and then restrict those by the second property which is the resistance against rain or not.
+		See the turtle file beneath.
+	\subsection{7) }
+		An outdoor furniture is necessarily an instance of the furniture class too (owl:onProperty rdf:type; owl:asValue furniture).
+		But to be sufficient too, it needs to resist against rain (owl:onProperty resistTo; owl:asValue db:Rain).
+		That's how I describe outdoor funiture : furniture which resist against rain.
+		To conclued, with the two properties, we get necessary and sufficent restriction to be an outdoor furniture.
+% 	\lstinputlisting{furnitures.ttl}
+\newpage
+
+\section{SPARQL 9 points}
+	\subsection{1) }
+		\textit{Perform 3 queries on \url{http://www.dbpedia.org} (6 points)}
+		Here are 3 queries I've made on Yasgui : \url{http://bit.ly/19hycKa} and \url{http://goo.gl/xuuGPn} and a construct query to finish \url{http://goo.gl/H3PAoz}
+	\subsection{2) }
+		Here are my queries on my ontology. The instances of my classes are well classified, as expected with reasoning.\\
+		The first query try to get all triples where "my:Inside\_furniture" is the predicate.
+		The second query show the first ten elements which are from type "?obj".
+		The first triple of the query put some restrictions about "?obj" (here it has only one value).\\
+		The third query is a service query that return the first ten triples which have "rdfs:range" as predicate, and the same object and the same subject.\\
+% 		\includegraphics[width=15cm]{Screen-shot-YASGUI.png}
+		\newline
+	\subsection{3) }
+		To try without reasoning, I comment a few lines in the config-inf-tdb.ttl.
+		After that I try a query I have already done on the local server to compare the results.
+		In this screen-shot, it is the same query as the second one.
+		There is only 4 results.\\
+		\newline
+	\subsection{4) }
+		The third query I made on the local server is a service query.
+		It shows that we can select all data we want from an other data set, with conditions on it.
+		Here the query asks for all the common tiples which as "rdfs:range" as predicate.
+
+\end{document}

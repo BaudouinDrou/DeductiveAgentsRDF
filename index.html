@@ -70,7 +70,7 @@
                       	// Adding the results in the DOM
                         $("#target").append($('<p>Value of the subject from the triple #' + i + ' : ' + results[i].s.value + '</p>'));
 						store.node(results[i].s.value, storeURI, function(graph) {
-							$("#target").append($('<p>Value of the graph object #' + i + ' : ' + graph.forEach(callBack) + '</p>'));
+							$("#target").append($('<p>Value of the graph object #' + i + ' : ' + graph.toNT() + '</p>'));
 						});
                       }
                     }    
